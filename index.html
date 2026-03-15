@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Trader</title>
-    <style>
-        body { background: #000; color: #fff; font-family: 'Arial', sans-serif; }
-        h1 { text-align: center; }
-        .container { max-width: 800px; margin: auto; }
-        /* Neon Space Theme Styling */
-        .neon { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
-    </style>
+    <title>Godot Game</title>
+    <script src="godot.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 class="neon">Welcome to Cosmic Trader</h1>
-        <p>Experience the ultimate trading in space with a dynamic inventory system, trading markets, cargo management, ship upgrades, quests, and save/load functionality.</p>
-    </div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        var canvas = document.getElementById('gameCanvas');
+        // Load Godot game script
+        var game = new GodotGame(canvas);
+    </script>
 </body>
 </html>
