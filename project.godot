@@ -1,12 +1,3 @@
-[project]
-name="Your Project Name"\nversion="0.1"
-script_version=4
-
-[general]
-autoload=""
-
-[rendering]
-vulkan_enabled=false
-
-[dependencies]
-# Add your project dependencies here
+[export]
+html5 = true
+main_scene = "scenes/main.tscn"
