@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[node name="MainUI" type="Control"]
+    rect_size = Vector2(1024, 768)
+
+    [node name="ButtonPlay" type="Button"]
+    text = "Play"
+    anchors/top_margin = 300
+    anchors/left_margin = 400
+    anchors/right_margin = 400
+    anchors/bottom_margin = 400
+
+    [node name="ButtonExit" type="Button"]
+    text = "Exit"
+    anchors/top_margin = 400
+    anchors/left_margin = 400
+    anchors/right_margin = 400
+    anchors/bottom_margin = 300
