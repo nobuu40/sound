@@ -1,17 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Godot Game</title>
-    <script src="godot.js"></script>
+    <title>Cosmic Trader</title>
+    <script>
+        // Game variables
+        let inventory = [];
+        let quests = [];
+        let shipUpgrades = [];
+        let credits = 1000;
+
+        // Function to load game data
+        function loadGame() {
+            const savedData = localStorage.getItem('cosmicTrader');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                inventory = data.inventory;
+                quests = data.quests;
+                shipUpgrades = data.shipUpgrades;
+                credits = data.credits;
+                alert('Game loaded!');
+            } else {
+                alert('No saved game found.');
+            }
+        }
+
+        // Function to save game data
+        function saveGame() {
+            const gameData = {
+                inventory: inventory,
+                quests: quests,
+                shipUpgrades: shipUpgrades,
+                credits: credits,
+            };
+            localStorage.setItem('cosmicTrader', JSON.stringify(gameData));
+            alert('Game saved!');
+        }
+
+        // Function to trade
+        function trade(item) {
+            if (credits >= item.price) {
+                credits -= item.price;
+                inventory.push(item);
+                alert('Traded for: ' + item.name);
+            } else {
+                alert('Not enough credits!');
+            }
+        }
+
+        // Function to upgrade ship
+        function upgradeShip(upgrade) {
+            if (credits >= upgrade.cost) {
+                credits -= upgrade.cost;
+                shipUpgrades.push(upgrade);
+                alert('Ship upgraded: ' + upgrade.name);
+            } else {
+                alert('Not enough credits!');
+            }
+        }
+
+        // Initialize game
+        function init() {
+            // Game setup here
+            loadGame(); // Load any existing game data
+        }
+
+        window.onload = init;
+    </script>
 </head>
 <body>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
-    <script>
-        var canvas = document.getElementById('gameCanvas');
-        // Load Godot game script
-        var game = new GodotGame(canvas);
-    </script>
+    <h1>Welcome to Cosmic Trader</h1>
+    <button onclick="saveGame()">Save Game</button>
+    <button onclick="loadGame()">Load Game</button>
+    <h2>Your Inventory</h2>
+    <ul id="inventory"></ul>
+    <h2>Your Quests</h2>
+    <ul id="quests"></ul>
+    <h2>Your Ship Upgrades</h2>
+    <ul id="shipUpgrades"></ul>
 </body>
 </html>
